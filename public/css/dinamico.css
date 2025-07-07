@@ -1,0 +1,166 @@
+/**
+ * CSS dinâmico gerado automaticamente pelo sistema
+ * Este arquivo será substituído pelo conteúdo gerado pelo CssService
+ */
+
+:root {
+    --cor-primaria: #007bff;
+    --cor-secundaria: #6c757d;
+    --cor-texto: #212529;
+    --cor-fundo: #ffffff;
+    --fonte-principal: 'Roboto, sans-serif';
+}
+
+.bg-primary {
+    background-color: var(--cor-primaria) !important;
+}
+
+.bg-secondary {
+    background-color: var(--cor-secundaria) !important;
+}
+
+.text-primary {
+    color: var(--cor-primaria) !important;
+}
+
+.text-secondary {
+    color: var(--cor-secundaria) !important;
+}
+
+.btn-primary {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-secondary {
+    background-color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.card-header.bg-primary {
+    background-color: var(--cor-primaria) !important;
+}
+
+.footer {
+    background-color: var(--cor-secundaria);
+    color: #fff;
+    padding: 3rem 0 1rem;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-contact-info li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact-info i {
+    margin-right: 0.75rem;
+    width: 16px;
+    text-align: center;
+}
+
+.social-media a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    margin-right: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.social-media a:hover {
+    background-color: var(--cor-primaria);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-bar {
+    background-color: #f8f9fa;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+}
+
+.top-bar a {
+    color: #6c757d;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.top-bar a:hover {
+    color: var(--cor-primaria);
+}
+
+.main-header {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.text-logo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none;
+}
+
+.text-logo span {
+    color: var(--cor-primaria);
+}
+
+.main-nav .nav-link {
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+.main-nav .nav-link:hover {
+    color: var(--cor-primaria);
+}
+
+.search-box .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.search-box .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
