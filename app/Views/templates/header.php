@@ -79,14 +79,6 @@
                     <a class="nav-link <?= current_url() == site_url('marcas-parceiras') ? 'active' : '' ?>"
                         href="<?= site_url('marcas-parceiras') ?>">Marcas Parceiras</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= current_url() == site_url('sobre') ? 'active' : '' ?>"
-                        href="<?= site_url('sobre') ?>">Sobre</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= current_url() == site_url('contato') ? 'active' : '' ?>"
-                        href="<?= site_url('contato') ?>">Contato</a>
-                </li>
             </ul>
             <div class="d-flex align-items-center">
                 <a href="<?= site_url('carrinho') ?>" class="btn btn-outline-light me-3 position-relative">
