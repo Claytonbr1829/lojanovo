@@ -22,28 +22,28 @@ class Home extends BaseController
 			$marcaParceiraModel = new MarcaParceiraModel();
 			$depoimentoModel = new DepoimentoModel();
 			$aparenciaModel = new AparenciaModel();
-			
+
 			// Obtém os produtos em destaque
 			$produtosDestaque = $produtoModel->getProdutosDestaque();
-			
+
 			// Obtém os produtos mais vendidos
 			$produtosMaisVendidos = $produtoModel->getProdutosMaisVendidos();
-			
+
 			// Obtém as novidades
 			$produtosNovos = $produtoModel->getProdutosNovos();
-			
+
 			// Obtém as categorias principais
-			$categorias = $categoriaModel->getCategorias(true, 6);
-			
+			//$categorias = $categoriaModel->getCategorias(true, 6);
+			$categorias = $categoriaModel->findAll();
 			// Obtém as marcas parceiras
 			$marcasParceiras = $marcaParceiraModel->getMarcasParceiras();
-			
+
 			// Obtém os depoimentos
 			$depoimentos = $depoimentoModel->getDepoimentos();
-			
+
 			// Obtém as configurações de aparência
 			$aparencia = $aparenciaModel->getConfiguracoes();
-			
+
 			// Prepara os dados para a view
 			$data = [
 				'title' => $aparencia['titulo_site'] ?? 'Página Inicial',
@@ -57,14 +57,13 @@ class Home extends BaseController
 				'depoimentos' => $depoimentos,
 				'aparencia' => $aparencia
 			];
-			
 			// Renderiza a view
 			return $this->renderView('home', $data);
-			
+
 		} catch (\Exception $e) {
 			// Registra o erro no log
 			log_message('error', 'Erro na página inicial: ' . $e->getMessage());
-			
+
 			// Em ambiente de produção, mostrar uma página mais amigável
 			if (ENVIRONMENT === 'production') {
 				// Dados para a view de erro
@@ -72,13 +71,15 @@ class Home extends BaseController
 					'title' => 'Oops! Algo deu errado',
 					'message' => 'Estamos enfrentando dificuldades técnicas. Por favor, tente novamente mais tarde.'
 				];
-				
+
 				// Renderiza a view de erro
 				return $this->renderView('errors/html/error_exception', $data);
 			}
-			
+
 			// Em ambiente de desenvolvimento, lança a exceção para mostrar detalhes
 			throw $e;
 		}
 	}
+
+
 }

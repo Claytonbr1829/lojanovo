@@ -41,7 +41,7 @@ class MarcaParceiraModelConsulta extends MarcaParceiraModelBase
             }
             
             return $marcas;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             log_message('error', "Erro ao buscar marcas parceiras: " . $e->getMessage());
             return [];
         }

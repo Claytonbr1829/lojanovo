@@ -58,12 +58,13 @@
                         Categorias
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategorias">
-                        <?php if (isset($categorias) && is_array($categorias) && !empty($categorias)): ?>
+                        <?php
+                        // Debug temporário
+                        if (!empty($categorias)): ?>
                             <?php foreach ($categorias as $categoria): ?>
                                 <li>
                                     <a class="dropdown-item"
                                         href="<?= site_url('categoria/' . (!empty($categoria['slug']) ? $categoria['slug'] : $categoria['id_categoria'])) ?>">
-                                        <i class="fas <?= $categoria['icone'] ?? 'fa-tag' ?> me-1"></i>
                                         <?= esc($categoria['nome']) ?>
                                     </a>
                                 </li>
@@ -73,6 +74,7 @@
                         <?php endif; ?>
                     </ul>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link <?= current_url() == site_url('marcas-parceiras') ? 'active' : '' ?>"
                         href="<?= site_url('marcas-parceiras') ?>">Marcas Parceiras</a>
@@ -106,12 +108,14 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="<?= site_url('minha-conta') ?>">
-                                <i class="fas fa-user-circle me-2"></i>Minha Conta</a></li>
+                                    <i class="fas fa-user-circle me-2"></i>Minha Conta</a></li>
                             <li><a class="dropdown-item" href="<?= site_url('meus-pedidos') ?>">
-                                <i class="fas fa-shopping-bag me-2"></i>Meus Pedidos</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                                    <i class="fas fa-shopping-bag me-2"></i>Meus Pedidos</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="<?= site_url('logout') ?>">
-                                <i class="fas fa-sign-out-alt me-2"></i>Sair</a></li>
+                                    <i class="fas fa-sign-out-alt me-2"></i>Sair</a></li>
                         </ul>
                     </div>
                 <?php else: ?>

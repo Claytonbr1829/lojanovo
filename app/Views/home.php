@@ -36,18 +36,18 @@
                 <img src="<?= base_url('uploads/banners/' . $banner['imagem']); ?>" class="d-block w-100"
                     alt="<?= $banner['titulo'] ?? 'Banner promocional' ?>">
                 <!-- <div class="carousel-caption"> -->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <h1 class="display-4 fw-bold"><?= $banner['titulo'] ?? '' ?></h1>
-                                <p class="lead"><?= $banner['subtitulo'] ?? '' ?></p>
-                                <?php if (isset($banner['link']) && !empty($banner['link'])): ?>
-                                    <a href="<?= $banner['link'] ?>"
-                                        class="btn btn-primary btn-lg"><?= $banner['texto_botao'] ?? 'Ver mais' ?></a>
-                                <?php endif; ?>
-                            </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h1 class="display-4 fw-bold"><?= $banner['titulo'] ?? '' ?></h1>
+                            <p class="lead"><?= $banner['subtitulo'] ?? '' ?></p>
+                            <?php if (isset($banner['link']) && !empty($banner['link'])): ?>
+                                <a href="<?= $banner['link'] ?>"
+                                    class="btn btn-primary btn-lg"><?= $banner['texto_botao'] ?? 'Ver mais' ?></a>
+                            <?php endif; ?>
                         </div>
                     </div>
+                </div>
                 <!-- //</div> -->
             </div>
         <?php endforeach; ?>
@@ -266,14 +266,14 @@
                 <a href="<?= site_url('produtos/novidades') ?>" class="view-all-link text-decoration-none">Ver todos <i
                         class="fas fa-chevron-right ms-1"></i></a>
             </div>
-            <div class="row g-4">
+            <div class="row g-4 h-100">
                 <?php foreach ($produtosNovos as $produto): ?>
                     <div class="col-6 col-md-4 col-lg-3">
-                        <div class="product-card card h-100">
+                        <div class="product-card card h-100 align-items-center">
                             <a href="<?= site_url('produto/' . ($produto['slug'] ?? $produto['id_produto'])) ?>"
                                 class="text-decoration-none">
                                 <img src="<?= base_url('uploads/produtos/' . ($produto['imagem'] ?? 'produto-default.jpg')) ?>"
-                                    class="card-img-top" alt="<?= esc($produto['nome']) ?>">
+                                    class="card-img-top w-auto" alt="<?= esc($produto['nome']) ?>">
                             </a>
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">
@@ -321,7 +321,7 @@
             <div class="row g-4">
                 <?php foreach ($marcasParceiras as $marca): ?>
                     <div class="col-6 col-md-3 col-lg-2">
-                        <a href="<?= site_url('marca/' . (isset($marca['slug']) ?? (isset($marca['id_marca'])))) ?>"
+                    <a href="<?= esc($marca['link']) ?>" target="_blank" class="text-decoration-none"
                             class="text-decoration-none">
                             <div class="brand-card card h-100">
                                 <img src="<?= base_url('uploads/marcas/' . ($marca['logo'] ?? 'marca-default.jpg')) ?>"

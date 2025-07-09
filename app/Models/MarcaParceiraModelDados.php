@@ -28,7 +28,7 @@ class MarcaParceiraModelDados extends MarcaParceiraModelBase
             
             $builder = $this->db->table($this->table);
             return $builder->insert($data);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             log_message('error', "Erro ao inserir marca parceira: " . $e->getMessage());
             return false;
         }
@@ -62,7 +62,7 @@ class MarcaParceiraModelDados extends MarcaParceiraModelBase
             $builder->where('id_empresa', $this->idEmpresa);
             
             return $builder->update($data);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             log_message('error', "Erro ao atualizar marca parceira: " . $e->getMessage());
             return false;
         }
