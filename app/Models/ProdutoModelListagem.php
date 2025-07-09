@@ -38,65 +38,58 @@ class ProdutoModelListagem extends ProdutoModelBase
         ?string $busca = null
     ): array {
         try {
-            // Inicia a consulta
-            $builder = $this->select('p.*, c.nome as categoria_nome')
-                ->from($this->table . ' p')
-                ->join('categorias_dos_produtos c', 'p.id_categoria = c.id_categoria', 'left')
-                ->where('p.id_empresa', $this->idEmpresa)
-                ->where('p.ativo', 1);
-            
-            // Aplica filtro de categoria
+            $produtos_model = new ProdutoModelBase();
+            $builder = $produtos_model->builder();
+    
+            $builder->select('produtos.*, c.nome as categoria_nome')
+                    ->join('categorias_dos_produtos c', 'produtos.id_categoria = c.id_categoria', 'left')
+                    ->where('produtos.id_empresa', $this->idEmpresa)
+                    ->where('produtos.ativo', 1);
+    
             if (!is_null($categoria)) {
-                $builder->where('p.id_categoria', $categoria);
+                $builder->where('produtos.id_categoria', $categoria);
             }
-            
-            // Aplica filtro de preço mínimo
+    
             if (!is_null($precoMin)) {
-                $builder->where('p.preco >=', $precoMin);
+                $builder->where('produtos.preco >=', $precoMin);
             }
-            
-            // Aplica filtro de preço máximo
+    
             if (!is_null($precoMax)) {
-                $builder->where('p.preco <=', $precoMax);
+                $builder->where('produtos.preco <=', $precoMax);
             }
-            
-            // Aplica filtro de busca
+    
             if (!is_null($busca)) {
                 $builder->groupStart()
-                    ->like('p.nome', $busca)
-                    ->orLike('p.descricao', $busca)
+                    ->like('produtos.nome', $busca)
+                    ->orLike('produtos.descricao', $busca)
                     ->orLike('c.nome', $busca)
                     ->groupEnd();
             }
-            
-            // Aplica ordenação
+    
+            // Validação de ordenação
             $camposValidos = ['nome', 'preco', 'data_cadastro'];
             $ordemValida = ['asc', 'desc'];
-            
-            // Garante que os campos de ordenação são válidos
+    
             if (!in_array($sortBy, $camposValidos)) {
                 $sortBy = 'nome';
             }
-            
+    
             if (!in_array($sortOrder, $ordemValida)) {
                 $sortOrder = 'asc';
             }
-            
-            // Mapeia campos para seus nomes completos na query
+    
+            // Mapeia para nomes de campos reais
             $camposMapeados = [
-                'nome' => 'p.nome',
-                'preco' => 'p.preco',
-                'data_cadastro' => 'p.updated_at'
+                'nome' => 'produtos.nome',
+                'preco' => 'produtos.preco',
+                'data_cadastro' => 'produtos.updated_at'
             ];
-            
+    
             $builder->orderBy($camposMapeados[$sortBy], $sortOrder);
-            
-            // Aplica limite e offset para paginação
             $builder->limit($limit, $offset);
-            
-            // Executa a query
+    
             $produtos = $builder->get()->getResultArray();
-            
+    
             return $this->formatarProdutos($produtos);
         } catch (\Exception $e) {
             log_message('error', 'Erro ao buscar produtos: ' . $e->getMessage());
@@ -113,53 +106,46 @@ class ProdutoModelListagem extends ProdutoModelBase
      * @param string|null $busca Termo de busca
      * @return int
      */
-    public function countProdutos(
-        ?int $categoria = null,
-        ?float $precoMin = null,
-        ?float $precoMax = null,
-        ?string $busca = null
-    ): int {
-        try {
-            // Inicia a consulta
-            $builder = $this->select('COUNT(*) as total')
-                ->from($this->table . ' p')
-                ->join('categorias_dos_produtos c', 'p.id_categoria = c.id_categoria', 'left')
-                ->where('p.id_empresa', $this->idEmpresa)
-                ->where('p.ativo', 1);
-            
-            // Aplica filtro de categoria
+
+     public function countProdutos($categoria = null, $precoMin = null, $precoMax = null, $busca = null)
+     {
+        try{
+            $produtos_model = new ProdutoModelBase();
+
+            $builder = $produtos_model->builder();
+            $builder->select('produtos.*')
+                    ->join('categorias_dos_produtos c', 'produtos.id_categoria = c.id_categoria', 'left')
+                    ->where('produtos.id_empresa', $this->idEmpresa)
+                    ->where('produtos.ativo', 1);
+
             if (!is_null($categoria)) {
-                $builder->where('p.id_categoria', $categoria);
+                $builder->where('produtos.id_categoria', $categoria);
             }
-            
-            // Aplica filtro de preço mínimo
+
             if (!is_null($precoMin)) {
-                $builder->where('p.preco >=', $precoMin);
+                $builder->where('produtos.preco >=', $precoMin);
             }
-            
-            // Aplica filtro de preço máximo
+
             if (!is_null($precoMax)) {
-                $builder->where('p.preco <=', $precoMax);
+                $builder->where('produtos.preco <=', $precoMax);
             }
-            
-            // Aplica filtro de busca
+
             if (!is_null($busca)) {
                 $builder->groupStart()
-                    ->like('p.nome', $busca)
-                    ->orLike('p.descricao', $busca)
+                    ->like('produtos.nome', $busca)
+                    ->orLike('produtos.descricao', $busca)
                     ->orLike('c.nome', $busca)
-                    ->groupEnd();
+                ->groupEnd();
             }
+
+            $contagem = $builder->countAllResults();
             
-            // Executa a query
-            $result = $builder->get()->getRowArray();
-            
-            return isset($result['total']) ? (int)$result['total'] : 0;
+            return isset($contagem) ? (int)$contagem : 0;
         } catch (\Exception $e) {
             log_message('error', 'Erro ao contar produtos: ' . $e->getMessage());
             return 0;
         }
-    }
+     }
 
     /**
      * Obtém todos os produtos ativos para a loja virtual
