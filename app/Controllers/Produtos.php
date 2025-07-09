@@ -25,11 +25,11 @@ class Produtos extends BaseController
             $perPage = 12;
             
             // Obtém as opções de filtro
-            $categoria = $this->request->getVar('categoria');
-            $preco_min = $this->request->getVar('preco_min');
-            $preco_max = $this->request->getVar('preco_max');
+            $categoria = $this->request->getVar('categoria') == '' ? null : $this->request->getVar('categoria');
+            $preco_min = $this->request->getVar('preco_min') == '' ? null : $this->request->getVar('preco_min');
+            $preco_max = $this->request->getVar('preco_max') == '' ? null : $this->request->getVar('preco_max');
             $busca = $this->request->getVar('q');
-            
+
             // Obtém as opções de ordenação
             $sortBy = $this->request->getVar('sort') ?? 'nome';
             $sortOrder = $this->request->getVar('order') ?? 'asc';
@@ -57,9 +57,9 @@ class Produtos extends BaseController
             // Configura o paginador
             $pager->setPath('produtos');
             $pager->makeLinks($page, $perPage, $totalProdutos);
-            
+
             // Busca todas as categorias para o filtro
-            $categorias = $categoriaModel->getCategorias();
+            $categorias = $categoriaModel->getCategorias(0, false, $this->idEmpresa);
             
             // Prepara os dados para a view
             $data = [

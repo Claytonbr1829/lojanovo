@@ -20,7 +20,7 @@ class CategoriaModelLista extends CategoriaModelBase
             if ($idEmpresa === null) {
                 $idEmpresa = $this->idEmpresa;
             }
-            
+
             $builder = $this->db->table($this->table . ' c');
             $builder->select('c.id_categoria, c.nome, c.descricao, c.imagem, c.exibir_na_loja, c.destaque_na_loja, c.ordem_na_loja, c.slug');
             $builder->select('(SELECT COUNT(*) FROM produtos p WHERE p.id_categoria = c.id_categoria AND p.mostrar_na_loja = 1 AND p.ativo = 1 AND p.id_empresa = c.id_empresa) as total_produtos');
