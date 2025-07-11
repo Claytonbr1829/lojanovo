@@ -25,9 +25,9 @@ class Produtos extends BaseController
             $perPage = 12;
 
             // Obtém as opções de filtro
-            $categoria = $this->request->getVar('categoria');
-            $preco_min = $this->request->getVar('preco_min');
-            $preco_max = $this->request->getVar('preco_max');
+            $categoria = $this->request->getVar('categoria') == '' ? null : $this->request->getVar('categoria');
+            $preco_min = $this->request->getVar('preco_min') == '' ? null : $this->request->getVar('preco_min');
+            $preco_max = $this->request->getVar('preco_max') == '' ? null : $this->request->getVar('preco_max');
             $busca = $this->request->getVar('q');
 
             // Obtém as opções de ordenação
@@ -59,8 +59,13 @@ class Produtos extends BaseController
             $pager->makeLinks($page, $perPage, $totalProdutos);
 
             // Busca todas as categorias para o filtro
+<<<<<<< HEAD
             $categorias = $categoriaModel->getCategorias();
 
+=======
+            $categorias = $categoriaModel->getCategorias(0, false, $this->idEmpresa);
+            
+>>>>>>> 943a68f9d4a30843144978c27e74d37c0d3f7014
             // Prepara os dados para a view
             $data = [
                 'title' => 'Produtos',

@@ -51,11 +51,11 @@ class ProdutoModelListagem extends ProdutoModelBase
             }
     
             if (!is_null($precoMin)) {
-                $builder->where('produtos.preco >=', $precoMin);
+                $builder->where('produtos.valor_de_venda >=', $precoMin);
             }
     
             if (!is_null($precoMax)) {
-                $builder->where('produtos.preco <=', $precoMax);
+                $builder->where('produtos.valor_de_venda <=', $precoMax);
             }
     
             if (!is_null($busca)) {
@@ -81,7 +81,7 @@ class ProdutoModelListagem extends ProdutoModelBase
             // Mapeia para nomes de campos reais
             $camposMapeados = [
                 'nome' => 'produtos.nome',
-                'preco' => 'produtos.preco',
+                'preco' => 'produtos.valor_de_venda',
                 'data_cadastro' => 'produtos.updated_at'
             ];
     
@@ -123,11 +123,11 @@ class ProdutoModelListagem extends ProdutoModelBase
             }
 
             if (!is_null($precoMin)) {
-                $builder->where('produtos.preco >=', $precoMin);
+                $builder->where('produtos.valor_de_venda >=', $precoMin);
             }
 
             if (!is_null($precoMax)) {
-                $builder->where('produtos.preco <=', $precoMax);
+                $builder->where('produtos.valor_de_venda <=', $precoMax);
             }
 
             if (!is_null($busca)) {
