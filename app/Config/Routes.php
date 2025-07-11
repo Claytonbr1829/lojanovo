@@ -73,6 +73,7 @@ $routes->get('produtos/destaque', 'Produtos::destaque');
 $routes->get('produtos/mais-vendidos', 'Produtos::maisVendidos');
 $routes->get('produtos/novidades', 'Produtos::novidades');
 $routes->get('produtos/buscar', 'Produtos::buscar');
+$routes->get('detalhesproduto/(:num)', 'Produtos::detalhesProdutos/$1');
 
 // Rotas para o controlador de Cliente
 $routes->get('login', 'Cliente::login');

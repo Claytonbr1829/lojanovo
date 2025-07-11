@@ -126,6 +126,7 @@
                     <i class="fas fa-info-circle me-2"></i> Nenhum produto encontrado com os filtros selecionados.
                 </div>
             <?php else: ?>
+              
                 <div class="row g-4">
                     <?php foreach($produtos as $produto): ?>
                         <div class="col-6 col-md-4 col-lg-3">
@@ -140,7 +141,7 @@
                                 <?php endif; ?>
                                 
                                 <!-- Imagem do produto -->
-                                <a href="<?= site_url('produto/' . ($produto['slug'] ?? $produto['id_produto'])); ?>" class="text-decoration-none">
+                                <a href="<?= site_url('detalhesproduto/' . $produto['id_produto']); ?>" class="text-decoration-none">
                                     <img src="<?= base_url( 'uploads/produtos/'.($produto['arquivo'] != '' ? $produto['arquivo'] : 'produto-default.jpg'))?>" 
                                          class="card-img-top" 
                                          alt="<?= esc($produto['nome']); ?>">
@@ -206,8 +207,10 @@
                 
                 <!-- Paginação -->
                 <?php if (isset($pager)): ?>
-                    <div class="mt-5">
-                        <?= $pager->links(); ?>
+                    <div class="col-md-9 d-flex justify-content-center mt-4">
+                        <div class="">
+                            <?= $pager->links('default', 'bootstrap_full') ?>
+                        </div>
                     </div>
                 <?php endif; ?>
             <?php endif; ?>
@@ -311,5 +314,21 @@
     .new-price, .price {
         font-size: 1rem;
     }
-}
+
+
+
+    .pagination .page-item .page-link {
+        background-color: #dc3545 !important; /* Vermelho do Bootstrap (bg-danger) */
+        color: white !important; /* Texto branco para contraste */
+        border-color: #dc3545 !important; /* Borda vermelha */
+    }
+    .pagination .page-item.active .page-link {
+        background-color: #a71d2a !important; /* Vermelho mais escuro para página ativa */
+        border-color: #a71d2a !important;
+    }
+    .pagination .page-item.disabled .page-link {
+        background-color: #dc3545 !important; /* Vermelho para botões desativados */
+        opacity: 0.6;
+    }
+
 </style>
