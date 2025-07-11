@@ -1,5 +1,5 @@
 <div class="container mt-4 mb-5">
-    <h1 class="mb-4"><?= lang('Checkout.checkout') ?></h1>
+    <h1 class="mb-4">Finalizar compra</h1>
 
     <?php if (isset($error)): ?>
         <div class="alert alert-danger">
@@ -18,7 +18,7 @@
         <div class="col-md-8">
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><?= lang('Checkout.steps.login') ?></h4>
+                    <h4 class="mb-0">Login</h4>
                 </div>
                 <div class="card-body">
                     <?php if (isset($cliente)): ?>
@@ -34,22 +34,22 @@
                                 <p class="mb-0"><?= $cliente['celular_1'] ?? '' ?></p>
                             </div>
                             <a href="<?= site_url('cliente/logout') ?>"
-                                class="btn btn-outline-primary"><?= lang('Users.auth.logout') ?></a>
+                                class="btn btn-outline-primary">Sair</a>
                         </div>
                     <?php else: ?>
                         <!-- Cliente não logado -->
                         <div class="row">
                             <div class="col-md-6">
-                                <h5><?= lang('Users.auth.login') ?></h5>
-                                <p><?= lang('Checkout.login.guest') ?></p>
+                                <h5>Entrar</h5>
+                                <p>Continuar como visitante</p>
                                 <p><a href="<?= site_url('login') ?>"
-                                        class="btn btn-primary"><?= lang('Users.auth.login') ?></a></p>
+                                        class="btn btn-primary">Entrar</a></p>
                             </div>
                             <div class="col-md-6">
-                                <h5><?= lang('Users.auth.register') ?></h5>
-                                <p><?= lang('Users.messages.new_account') ?></p>
+                                <h5>Cadastrar</h5>
+                                <p>Nova Conta</p>
                                 <p><a href="<?= site_url('cliente/cadastro') ?>"
-                                        class="btn btn-outline-primary"><?= lang('Users.auth.register') ?></a></p>
+                                        class="btn btn-outline-primary">Cadastrar</a></p>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -61,24 +61,24 @@
                     <!-- Formulário para não logados -->
                     <div class="card mb-4">
                         <div class="card-header bg-primary text-white">
-                            <h4 class="mb-0"><?= lang('User.personal_info') ?></h4>
+                            <h4 class="mb-0">Informações pessoais</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="nome" class="form-label"><?= lang('Users.fields.name') ?></label>
+                                    <label for="nome" class="form-label">Nome</label>
                                     <input type="text" class="form-control" id="nome" name="nome" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="email" class="form-label"><?= lang('Users.fields.email') ?></label>
+                                    <label for="email" class="form-label">E-mai</label>
                                     <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="telefone" class="form-label"><?= lang('Users.fields.phone') ?></label>
+                                    <label for="telefone" class="form-label">Telefone</label>
                                     <input type="tel" class="form-control" id="telefone" name="telefone">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="cpf" class="form-label"><?= lang('Contact.cpf') ?></label>
+                                    <label for="cpf" class="form-label">CPF</label>
                                     <input type="text" class="form-control" id="cpf" name="cpf">
                                 </div>
                             </div>
@@ -89,48 +89,48 @@
                 <!-- Endereço de Entrega -->
                 <div class="card mb-4">
                     <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0"><?= lang('Checkout.shipping.address') ?></h4>
+                        <h4 class="mb-0">Endereço de entrega</h4>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="cep" class="form-label"><?= lang('Checkout.address.zip_code') ?></label>
+                                <label for="cep" class="form-label">CEP</label>
                                 <input type="text" class="form-control" id="cep" name="cep" required
                                     value="<?= $endereco_preenchido['cep'] ?? '' ?>">
                             </div>
                             <div class="col-md-8 mb-3">
                                 <label for="logradouro"
-                                    class="form-label"><?= lang('Checkout.address.street') ?></label>
+                                    class="form-label">Rua</label>
                                 <input type="text" class="form-control" id="logradouro" name="logradouro" required
                                     value="<?= $endereco_preenchido['logradouro'] ?? '' ?>">
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="numero" class="form-label"><?= lang('Checkout.address.number') ?></label>
+                                <label for="numero" class="form-label">Número</label>
                                 <input type="text" class="form-control" id="numero" name="numero" required
                                     value="<?= $endereco_preenchido['numero'] ?? '' ?>">
                             </div>
                             <div class="col-md-8 mb-3">
                                 <label for="complemento"
-                                    class="form-label"><?= lang('Checkout.address.complement') ?></label>
+                                    class="form-label">Complemento</label>
                                 <input type="text" class="form-control" id="complemento" name="complemento"
                                     value="<?= $endereco_preenchido['complemento'] ?? '' ?>">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="bairro"
-                                    class="form-label"><?= lang('Checkout.address.neighborhood') ?></label>
+                                    class="form-label">Bairro</label>
                                 <input type="text" class="form-control" id="bairro" name="bairro" required
                                     value="<?= $endereco_preenchido['bairro'] ?? '' ?>">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="id_municipio"
-                                    class="form-label"><?= lang('Checkout.address.city') ?></label>
+                                    class="form-label">Cidade</label>
                                 <input type="text" class="form-control" id="id_municipio" name="id_municipio" required
                                     value="<?= $endereco_preenchido['municipio'] ?? '' ?>">
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="id_uf" class="form-label"><?= lang('Checkout.address.state') ?></label>
+                                <label for="id_uf" class="form-label">Estado</label>
                                 <select class="form-select" id="id_uf" name="id_uf" required>
-                                    <option value=""><?= lang('System/system_info/select_state') ?></option>
+                                    <option value="">Selecione Estado</option>
                                     <?php foreach ($estados as $estado): ?>
                                         <option value="<?= $estado['id_uf'] ?>" <?= (isset($cliente['id_uf']) && $cliente['id_uf'] == $estado['id_uf']) ||
                                               (isset($endereco_preenchido['id_uf']) && $endereco_preenchido['id_uf'] == $estado['id_uf']) ? 'selected' : '' ?>>
@@ -147,7 +147,7 @@
                 <div class="card mb-4">
                     <div id="divEstimaFrete">
                         <div class="card-header bg-primary text-white">
-                            <h4 class="mb-0"><?= lang('Checkout.review.calcular') ?></h4>
+                            <h4 class="mb-0">Calcular Frete</h4>
                         </div>
                         <div class="card-body">
                             <div class="d-flex justify-content-center flex-column align-items-center">
@@ -172,7 +172,7 @@
                 </div>
 
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-success btn-lg"><?= lang('Checkout.review.confirm') ?></button>
+                    <button type="submit" class="btn btn-success btn-lg">Confirmar pedido</button>
                 </div>
             </form>
         </div>
@@ -181,11 +181,11 @@
         <div class="col-md-4">
             <div class="card sticky-top" style="top: 20px;">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><?= lang('Checkout.checkout_summary') ?></h4>
+                    <h4 class="mb-0"><Resumo do pedido</h4>
                 </div>
                 <div class="card-body">
                     <div class="mb-4">
-                        <h5><?= lang('Checkout.review.items') ?></h5>
+                        <h5>Itens</h5>
                         <ul class="list-group mb-3">
                             <?php foreach ($itens as $item): ?>
                                 <?php
@@ -218,18 +218,18 @@
                     </div>
 
                     <div class="mb-3">
-                        <h5><?= lang('Checkout.review.total') ?></h5>
+                        <h5>Total</h5>
                         <div class="d-flex justify-content-between mb-2">
-                            <span><?= lang('Checkout.review.subtotal') ?></span>
+                            <span>SubTotal</span>
                             <span id="resumo-subtotal">R$ <?= number_format($total, 2, ',', '.') ?></span>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
-                            <span><?= lang('Checkout.review.shipping_cost') ?></span>
+                            <span>Frete</span>
                             <span id="resumo-frete-valor">R$ 0,00</span>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between">
-                            <span class="fw-bold"><?= lang('Checkout.review.final_total') ?></span>
+                            <span class="fw-bold">Total final</span>
                             <span class="fw-bold" id="resumo-total">R$ <?= number_format($total, 2, ',', '.') ?></span>
                         </div>
                     </div>

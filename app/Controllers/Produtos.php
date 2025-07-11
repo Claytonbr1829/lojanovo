@@ -329,26 +329,4 @@ class Produtos extends BaseController
         }
     }
 
-    public function detalhesProdutos($idproduto)
-    {
-        
-        $produtoModel = new ProdutoModel();
-        $categoriaModel = new CategoriaModel();
-        
-
-        $produto = $produtoModel->find($idproduto); // Busca apenas o produto pelo ID
-        $categoria = $categoriaModel->find($produto['id_categoria']);
-
-
-        if (!$produto) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Produto não encontrado.");
-        }
-        $data = [
-            'produto' => $produto,
-            'categoria' => $categoria
-        ];
-
-        return $this->renderView('detalhesProduto', $data); // envia com nome correto
-    }
-
 }

@@ -24,13 +24,13 @@
                             <div class="mb-3">
                                 <div class="row">
                                     <div class="col-10">
-                                        <label for="email" class="form-label"><?= lang('Users.fields.email') ?></label>
+                                        <label for="email" class="form-label">E-mail</label>
                                         <input type="email"
                                             class="form-control <?= session('errors.email') ? 'is-invalid' : '' ?>"
                                             id="email" name="email" value="<?= old('email') ?>" required>
                                     </div>
                                     <div class="col-2">
-                                        <label for="id_empresa" class="form-label"><?= lang('Users.fields.idempresa') ?></label>
+                                        <label for="id_empresa" class="form-label">Id-Empresa</label>
                                         <input type="number"
                                             class="form-control <?= session('errors.email') ? 'is-invalid' : '' ?>"
                                             id="id_empresa" name="id_empresa" value="<?= old('id_empresa') ?>" required>
@@ -43,7 +43,7 @@
 
                             <!-- Campo Senha -->
                             <div class="mb-3">
-                                <label for="senha" class="form-label"><?= lang('Users.fields.password') ?></label>
+                                <label for="senha" class="form-label">Password</label>
                                 <input type="password"
                                     class="form-control <?= session('errors.senha') ? 'is-invalid' : '' ?>" id="senha"
                                     name="senha" required>
@@ -57,7 +57,7 @@
                             <!-- Campo Confirma Senha -->
                             <div class="mb-3">
                                 <label for="confirma_senha"
-                                    class="form-label"><?= lang('Users.fields.confirm_password') ?></label>
+                                    class="form-label">Confirmar Senha</label>
                                 <input type="password"
                                     class="form-control <?= session('errors.confirma_senha') ? 'is-invalid' : '' ?>"
                                     id="confirma_senha" name="confirma_senha" required>

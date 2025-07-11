@@ -141,7 +141,7 @@
                                 <?php endif; ?>
                                 
                                 <!-- Imagem do produto -->
-                                <a href="<?= site_url('detalhesproduto/' . $produto['id_produto']); ?>" class="text-decoration-none">
+                                <a href="<?= site_url('produto/' . $produto['id_produto']); ?>" class="text-decoration-none">
                                     <img src="<?= base_url( 'uploads/produtos/'.($produto['arquivo'] != '' ? $produto['arquivo'] : 'produto-default.jpg'))?>" 
                                          class="card-img-top" 
                                          alt="<?= esc($produto['nome']); ?>">
@@ -176,7 +176,7 @@
                                     <!-- Botões -->
                                     <div class="d-flex gap-2 mt-3 align-items-center">
                                         <!-- Botão Ver Detalhes -->
-                                        <a href="<?= site_url('produto/' . ($produto['slug'] ?? $produto['id_produto'])); ?>" 
+                                        <a href="<?= site_url('produto/' . $produto['id_produto']); ?>" 
                                         class="btn btn-outline-primary py-2">
                                             <i class="fas fa-eye"></i>
                                             <span class="d-none d-sm-inline ms-1">Ver</span>

@@ -145,7 +145,7 @@
 
                             <!-- Campo Email -->
                             <div class="mb-3">
-                                <label for="email" class="form-label"><?= lang('Users.fields.email') ?></label>
+                                <label for="email" class="form-label">E-mail</label>
                                 <input type="email"
                                     class="form-control <?= session('errors.email') ? 'is-invalid' : '' ?>" id="email"
                                     name="email" value="<?= old('email') ?>" required>
